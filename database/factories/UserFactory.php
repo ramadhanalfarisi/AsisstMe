@@ -17,11 +17,17 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+    static $kategori = 1;
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        'role' => 1,
+        'kategori_id' => $kategori++,
+        'nama' => $faker->name,
+        'email' => $faker->email,
+        'alamat' => $faker->address,
+        'jenis_kelamin' => 1,
+        'password' => bcrypt('12345'), // password
+        'no_telp' => '1234567',
+        'status_hire' => 0,
+        'rating' => 1,
     ];
 });
