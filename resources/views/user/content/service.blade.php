@@ -8,7 +8,7 @@
                             <i class="service-icon icon-chemistry"></i>
                         </div>
                         <div class="service-info">
-                            <h3>Art Of Coding</h3>
+                            <h3>Certified Assistant</h3>
                             <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
                         </div>
                         <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" class="content-wrapper-link"></a>    
@@ -20,7 +20,7 @@
                             <i class="service-icon color-white icon-screen-tablet"></i>
                         </div>
                         <div class="service-info">
-                            <h3 class="color-white">Responsive Design</h3>
+                            <h3 class="color-white">Easier Communication</h3>
                             <p class="color-white margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
                         </div>
                         <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" class="content-wrapper-link"></a>    
@@ -60,7 +60,7 @@
                             <i class="service-icon icon-speedometer"></i>
                         </div>
                         <div class="service-info">
-                            <h3>Fast Delivery</h3>
+                            <h3>Fast Search</h3>
                             <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
                         </div>
                         <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" class="content-wrapper-link"></a>    

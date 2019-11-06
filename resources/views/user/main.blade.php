@@ -50,9 +50,9 @@
         <!--========== SLIDER ==========-->
 
         <!--========== PAGE LAYOUT ==========-->
-        <!-- Products -->
-        @include('user.content.products')
-        <!-- End Products -->
+        <!-- Categories -->
+        @include('user.content.categories')
+        <!-- End Categories -->
 
         <!-- Service -->
         @include('user.content.service')
