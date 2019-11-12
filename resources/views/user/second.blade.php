@@ -45,26 +45,7 @@
         @include('user.layout.header')
         <!--========== END HEADER ==========-->
 
-        <!--========== SLIDER ==========-->
-        @include('user.content.slider')
-        <!--========== SLIDER ==========-->
-
-        <!--========== PAGE LAYOUT ==========-->
-        <!-- Categories -->
-        @include('user.content.categories')
-        <!-- End Categories -->
-
-        <!-- Service -->
-        @include('user.content.service')
-        <!-- End Service -->
-
-        <!-- Promo Banner -->
-        @include('user.content.promo')
-        <!-- End Promo Banner -->
-
-        <!-- Testimonials -->
-        @include('user.content.testi')
-        <!-- End Testimonials -->
+        @include('user.content.listassist')
 
         <!--========== END PAGE LAYOUT ==========-->
 

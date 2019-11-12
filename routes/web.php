@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('user.main');
 });
+
+Route::get('/2', function () {
+    return view('user.second');
+});

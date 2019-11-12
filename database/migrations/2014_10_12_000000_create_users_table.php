@@ -31,6 +31,8 @@ class CreateUsersTable extends Migration
             $table->string('portfolio')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('kategori_id')->references('id')->on('kategoris');
         });
     }
 
