@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin | Dashboard</title>
+  <title>Admin | Tambah Kategori</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -47,6 +47,9 @@
           </div>
         </div>
       </form>
+
+      <!-- Right navbar links -->
+
     </nav>
     <!-- /.navbar -->
 
@@ -78,12 +81,14 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a href="{{url('/')}}" class="nav-link active">
-                <i class="far fa-folder-open nav-icon"></i>
-                <p>Kategori</p>
+              <a href="../examples/project_add.html" class="nav-link active">
+                <i class="far fa-plus-square nav-icon"></i>
+                <p>Tambah Kategori</p>
               </a>
             </li>
-
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
       </div>
       <!-- /.sidebar -->
     </aside>
@@ -95,19 +100,13 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Kategori</h1>
-              <br />
-              <a class="btn btn-primary btn-sm" href="{{url('/add')}}">
-                <i class="fas fa-plus"></i>
-                Add
-              </a>
+              <h1>Tambah Kategori</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Kategori</li>
+                <li class="breadcrumb-item active">Tambah Kategori</li>
               </ol>
-              <br>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -115,65 +114,32 @@
 
       <!-- Main content -->
       <section class="content">
+        <form action="" method="post">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-primary">
+                <div class="card-body">
 
-        <!-- Default box -->
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Kategori</h3>
+                  <div class="form-group">
+                    <label for="inputName">Nama Kategori</label>
+                    <input type="text" id="inputName" class="form-control">
+                  </div>
 
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                title="Collapse">
-                <i class="fas fa-minus"></i></button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                <i class="fas fa-times"></i></button>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <div class="row">
+            <div class="col-12">
+              <a href="#" class="btn btn-secondary">Cancel</a>
+              <input type="submit" value="Create new Porject" class="btn btn-success float-right">
             </div>
           </div>
-          <div class="card-body p-0">
-            <table class="table table-striped projects">
-              <thead>
-                <tr>
-                  <th style="width: 2%">
-                    No
-                  </th>
-                  <th style="width: 50%">
-                    Kategori Name
-                  </th>
-                  <th style="width: 20%">
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    1
-                  </td>
-                  <td>
-                    <a> Ramadhan </a>
-                  <td class="project-actions text-right">
-                    {{-- <a class="btn btn-primary btn-sm" href="{{url('/detail')}}">
-                      <i class="fas fa-folder">
-                      </i>
-                      View
-                    </a> --}}
-                    <a class="btn btn-info btn-sm" href="{{url('/edit')}}">
-                      <i class="fas fa-pencil-alt">
-                      </i>
-                      Edit
-                    </a>
-                    <a class="btn btn-danger btn-sm" href="#">
-                      <i class="fas fa-trash">
-                      </i>
-                      Delete
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
+        </form>
 
       </section>
       <!-- /.content -->
