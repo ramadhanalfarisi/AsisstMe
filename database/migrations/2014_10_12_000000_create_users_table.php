@@ -15,11 +15,11 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->enum('role', ['User', 'Superuser']);
+            $table->enum('role', ['User', 'Superuser'])->nullable();
             $table->unsignedBigInteger('kategori_id')->nullable();
             $table->string('nama');
             $table->string('alamat')->nullable();
-            $table->enum('jenis_kelamin', ['Pria', 'Wanita']);
+            $table->enum('jenis_kelamin', ['Pria', 'Wanita'])->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('no_telp')->nullable();

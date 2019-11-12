@@ -12,7 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('user.main');
+    return view('dashboard');
+});
+
+Route::get('/add', function(){
+    return view('add_kategori');
+});
+
+Route::get('/edit', function(){
+    return view('edit_kategori');
+});
+
+Route::get('/detail', function(){
+    return view('detail_kategori');
 });
 
 Route::get('/2', function () {
