@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
+Route::get('find-job', function () {
+    return view('user.findjob.content.home');
+});
+
+Route::get('', function () {
+    return view('user.main');
 });
 
 Route::get('/add', function(){
