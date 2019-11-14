@@ -26,7 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="container">
       <a href="/" class="navbar-brand">
         <img src="img/logo.png" alt="AssistMe Logo"
-             style="height: 50px;">
+             style="height: 60px;">
       </a>
       
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,12 +36,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="index3.html" class="nav-link">Home</a>
-          </li>
-          <form action="" method="post">
-            <input type="text" class="form-control" style="width: 600px;">
-            <button><i class="fa fa-search"></i></button>
+          <form action="" method="post" class="form-inline">
+            <input type="text" class="form-control" style="width: 750px;">
+            <button class="btn btn-info" style="margin-left: 10px;"><i class="fa fa-search"></i></button>
           </form>
         </ul>
       </div>
@@ -49,44 +46,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="#">
+        <li class="nav-item" style="margin-right: 5px;">
+          <a class="btn btn-primary" href="#">
             Register
             <!-- <i class="fas fa-sign-out-alt"></i> -->
           </a>  
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link" href="#">
+          <a class="btn btn-secondary" href="#">
             Login
             <!-- <i class="fas fa-sign-out-alt"></i> -->
           </a>  
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
         </li>
       </ul>
     </div>
