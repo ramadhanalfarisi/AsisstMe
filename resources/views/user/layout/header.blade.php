@@ -12,8 +12,8 @@
                 <!-- Logo -->
                 <div class="logo">
                     <a class="logo-wrap" href="#body">
-                        <img class="logo-img logo-img-main" src="img/logo.png" alt="Asentus Logo">
-                        <img class="logo-img logo-img-active" src="img/logo-dark.png" alt="Asentus Logo">
+                        <img class="logo-img logo-img-main" src="img/logo-white.png" alt="Asentus Logo">
+                        <img class="logo-img logo-img-active" src="img/logo.png" alt="Asentus Logo">
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -25,9 +25,9 @@
                     <ul class="nav navbar-nav navbar-nav-right">
                         <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#body">Home</a></li>
                         <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#products">Categories</a></li>
-                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#service">Service</a></li>
-                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#work">Work</a></li>
-                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#pricing">Pricing</a></li>
+                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#service">Why</a></li>
+                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#promo">About Us</a></li>
+                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#testi">Testimony</a></li>
                     </ul>
                 </div>
             </div>

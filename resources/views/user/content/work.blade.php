@@ -7,7 +7,7 @@
                 <!-- Work -->
                 <div class="work work-popup-trigger">
                     <div class="work-overlay">
-                        <img class="full-width img-responsive" src="img/800x400/01.jpg" alt="Portfolio Image">
+                        <img class="full-width img-responsive" src="/Home/img/800x400/01.jpg" alt="Portfolio Image">
                     </div>
                     <div class="work-popup-overlay">
                         <div class="work-popup-content">
@@ -46,7 +46,7 @@
                 <!-- Work -->
                 <div class="work work-popup-trigger">
                     <div class="work-overlay">
-                        <img class="full-width img-responsive" src="img/397x400/01.jpg" alt="Portfolio Image">
+                        <img class="full-width img-responsive" src="/Home/img/397x400/01.jpg" alt="Portfolio Image">
                     </div>
                     <div class="work-popup-overlay">
                         <div class="work-popup-content">
@@ -85,7 +85,7 @@
                 <!-- Work -->
                 <div class="work work-popup-trigger">
                     <div class="work-overlay">
-                        <img class="full-width img-responsive" src="img/397x300/01.jpg" alt="Portfolio Image">
+                        <img class="full-width img-responsive" src="/Home/img/397x300/01.jpg" alt="Portfolio Image">
                     </div>
                     <div class="work-popup-overlay">
                         <div class="work-popup-content">
@@ -124,7 +124,7 @@
                 <!-- Work -->
                 <div class="work work-popup-trigger">
                     <div class="work-overlay">
-                        <img class="full-width img-responsive" src="img/397x300/02.jpg" alt="Portfolio Image">
+                        <img class="full-width img-responsive" src="/Home/img/397x300/02.jpg" alt="Portfolio Image">
                     </div>
                     <div class="work-popup-overlay">
                         <div class="work-popup-content">
@@ -163,7 +163,7 @@
                 <!-- Work -->
                 <div class="work work-popup-trigger">
                     <div class="work-overlay">
-                        <img class="full-width img-responsive" src="img/397x300/03.jpg" alt="Portfolio Image">
+                        <img class="full-width img-responsive" src="/Home/img/397x300/03.jpg" alt="Portfolio Image">
                     </div>
                     <div class="work-popup-overlay">
                         <div class="work-popup-content">

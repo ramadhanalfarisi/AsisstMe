@@ -10,12 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('home');  
-});
 
 Route::get('/admin', function () {
     return view('dashboard');
+});
+
+Route::get('find-job', function () {
+    return view('user.findjob.content.home');
+});
+
+Route::get('', function () {
+    return view('user.main');
 });
 
 Route::get('/add', function(){
@@ -28,4 +33,8 @@ Route::get('/edit', function(){
 
 Route::get('/detail', function(){
     return view('detail_kategori');
+});
+
+Route::get('/2', function () {
+    return view('user.second');
 });

@@ -1,4 +1,4 @@
-<div class="content-md container">
+<div class="content-md container" id="testi">
     <div class="row">
         <div class="col-sm-9">
             <h2>Customer Reviews</h2>
@@ -10,23 +10,23 @@
                     <div class="swiper-slide">
                         <blockquote class="blockquote">
                             <div class="margin-b-20">
-                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret dolore magna aliqua. Ut enim minim veniam exercitation laboris ut siad consequat siad minim enum esqudiat dolore.
+                                Saya sangat berterima kasih kepada aplikasi Assist Me! karena sudah membantu saya dalam mencari assisten
                             </div>
                             <div class="margin-b-20">
-                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed tempor incididunt ut laboret tempor incididunt dolore magna consequat siad minim aliqua.
+                                Mencari assisten di aplikasi ini sangat mudah dan memuaskan karena banyak assiten yang sudah ahli.
                             </div>
-                            <p><span class="fweight-700 color-link">Joh Milner</span>, Metronic Customer</p>
+                            <p><span class="fweight-700 color-link">Jono Supratman</span>, Assist Me! Customer</p>
                         </blockquote>
                     </div>
                     <div class="swiper-slide">
                         <blockquote class="blockquote">
                             <div class="margin-b-20">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Berkat Assist Me! sekarang pekerjaan rumah tangga saya menjadi ringan
                             </div>
                             <div class="margin-b-20">
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Pokoknya Assist Me! sangat recommended buat mama muda yang butuh pembantu rumah tangga.
                             </div>
-                            <p><span class="fweight-700 color-link">Alex Clarson</span>, Metronic Customer</p>
+                            <p><span class="fweight-700 color-link">Ani Kamila</span>, Assist Me! Customer</p>
                         </blockquote>
                     </div>
                 </div>
