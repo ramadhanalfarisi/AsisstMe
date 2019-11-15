@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('find-job', function () {
-    return view('user.findjob.content.home');
-});
-
-Route::get('', function () {
-    return view('user.main');
-});
+Route::get('', 'UserController@index');
+Route::get('assist-search', 'UserController@indexSecond')->name('search');
+Route::post('register', 'UserController@registerFirst');
+Route::post('login', 'UserController@login');
+Route::get('logout', 'UserController@logout');
 
 Route::get('/add', function(){
     return view('add_kategori');

@@ -6,8 +6,19 @@
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container">
+    @if (Session::has('alert-success'))
+    <div class="alert alert-success alert-dismissible" style="margin-top: 10px; margin-bottom: -10px;">
+        <a href=""><button type="button" class="close" data-dismiss="alert">&times;</button></a>
+        {{Session::get('alert-success')}}
+    </div>
+    @endif
+    @if (Session::has('alert-danger'))
+    <div class="alert alert-danger alert-dismissible" style="margin-top: 10px; margin-bottom: -10px;">
+        <a href=""><button type="button" class="close" data-dismiss="alert">&times;</button></a>
+        {{Session::get('alert-danger')}}
+    </div>
+    @endif
     <div class="row mb-2">
-        
     </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>

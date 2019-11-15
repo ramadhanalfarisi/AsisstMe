@@ -38,27 +38,72 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="navbar-nav">
           <form action="" method="post" class="form-inline">
             <input type="text" class="form-control" style="width: 750px;">
-            <button class="btn btn-info" style="margin-left: 10px;"><i class="fa fa-search"></i></button>
+            <button class="btn btn-link" style="margin-left: 5px;"><i class="fa fa-search"></i></button>
           </form>
         </ul>
       </div>
-
+      @if(Auth::user() == null)
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item" style="margin-right: 5px;">
-          <a class="btn btn-primary" href="#">
+          <!-- Button trigger modal -->
+          <button type="" class="btn btn-link" data-toggle="modal" data-target="#register">
             Register
-            <!-- <i class="fas fa-sign-out-alt"></i> -->
-          </a>  
+          </button>
         </li>
         <li class="nav-item dropdown">
-          <a class="btn btn-secondary" href="#">
+          <button type="" class="btn btn-link" data-toggle="modal" data-target="#login">
             Login
-            <!-- <i class="fas fa-sign-out-alt"></i> -->
-          </a>  
+          </button>  
         </li>
       </ul>
+      @else
+        <!-- Right navbar links -->
+      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        <!-- User Account: style can be found in dropdown.less -->
+        <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="hidden-xs">{{ Auth::user()->nama }}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="" class="img-circle" alt="Image">
+
+                <p>
+                  Alexander Pierce - Web Developer
+                  <small>Member since Nov. 2012</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+      </ul>
+      @endif
     </div>
   </nav>
   <!-- /.navbar -->
@@ -77,6 +122,146 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 <!-- ./wrapper -->
 
+<!-- Modal -->
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Daftar Akun</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="register" method="post">
+        {{ csrf_field() }}
+          <label for="">Nama Lengkap</label>
+          <input type="text" class="form-control" name="nama">
+          @if($errors->has('nama'))
+          <div class="text-danger">
+              {{ $errors->first('nama')}}
+          </div>
+          @endif
+          <label for="">Jenis Kelamin</label>
+          <select name="kelamin" id="" class="form-control">
+            <option value="1">Pria</option>
+            <option value="2">Wanita</option>
+          </select>
+          @if($errors->has('kelamin'))
+          <div class="text-danger">
+              {{ $errors->first('kelamin')}}
+          </div>
+          @endif
+          <label for="">Email</label>
+          <input type="email" class="form-control" name="email">
+          @if($errors->has('email'))
+          <div class="text-danger">
+              {{ $errors->first('email')}}
+          </div>
+          @endif
+          <label for="">Password</label>
+          <input type="password" class="form-control" name="password">
+          @if($errors->has('password'))
+          <div class="text-danger">
+              {{ $errors->first('password')}}
+          </div>
+          @endif
+          <label for="">Ketik ulang password</label>
+          <input type="password" class="form-control" name="retype">
+          @if($errors->has('retype'))
+          <div class="text-danger">
+              {{ $errors->first('retype')}}
+          </div>
+          @endif
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="lengkap" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Mohon lengkapi data anda</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post">
+          <label for="">Nomor Telepon</label>
+          <input type="text" class="form-control">
+          <label for=""></label>
+          <select name="" id="" class="form-control">
+            <option value="">Pilih kategori</option>
+          </select>
+          <label for="">Provinsi</label>
+          <input type="text" class="form-control">
+          <label for="">Kota</label>
+          <input type="text" class="form-control">
+          <label for="">Alamat</label>
+          <input type="text" class="form-control">
+          <label for="">Ceritakan tentang diri anda</label>
+          <textarea name="" id="" cols="30" rows="5" class="form-control"></textarea>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#dokumen" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="dokumen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Mohon lengkapi data anda</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post">
+          <label for="">Foto Formal</label>
+          <input type="file" name="" id="" class="form-control" style="margin-bottom: 5px;">
+          <label for="">Foto CV</label>
+          <input type="file" name="" id="" class="form-control" style="margin-bottom: 5px;">
+          <label for="">Foto Portofolio</label>
+          <input type="file" name="" id="" class="form-control">
+        </form>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#login" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-top: 12.5%;">
+  <div class="modal-dialog" role="document" style="width: 385px;">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form method="post" action="login">
+        {{ csrf_field() }}
+          <label for="">Email</label>
+          <input type="email" class="form-control" name="email">
+          <label for="">Password</label>
+          <input type="password" class="form-control" name="password">
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
@@ -85,5 +270,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="bower_components/admin-lte/dist/js/adminlte.min.js"></script>
+
+<script>
+
+function load_second(){
+  $('#lengkap').modal('show');
+}
+
+</script>
 </body>
 </html>
