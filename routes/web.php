@@ -13,7 +13,9 @@
 
 Route::get('', 'UserController@index');
 Route::get('assist-search', 'UserController@indexSecond')->name('search');
+Route::get('assist-search/{id}', 'UserController@indexSecondSearch')->name('searchByKategori');
 Route::post('register', 'UserController@registerFirst');
+Route::post('register-2/{id}', 'UserController@registerSecond');
 Route::post('login', 'UserController@login');
 Route::get('logout', 'UserController@logout');
 

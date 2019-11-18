@@ -6,18 +6,6 @@
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container">
-    @if (Session::has('alert-success'))
-    <div class="alert alert-success alert-dismissible" style="margin-top: 10px; margin-bottom: -10px;">
-        <a href=""><button type="button" class="close" data-dismiss="alert">&times;</button></a>
-        {{Session::get('alert-success')}}
-    </div>
-    @endif
-    @if (Session::has('alert-danger'))
-    <div class="alert alert-danger alert-dismissible" style="margin-top: 10px; margin-bottom: -10px;">
-        <a href=""><button type="button" class="close" data-dismiss="alert">&times;</button></a>
-        {{Session::get('alert-danger')}}
-    </div>
-    @endif
     <div class="row mb-2">
     </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -36,9 +24,15 @@
             <form action="" method="post">
                 <select name="" id="" class="form-control" style="margin-bottom: 10px;">
                     <option value="">Pilih kategori</option>
+                    @foreach($kategori as $k)
+                    <option value="{{$k->id}}">{{$k->name}}</option>
+                    @endforeach
                 </select>
                 <select name="" id="" class="form-control" style="margin-bottom: 10px;">
                     <option value="">Pilih rating</option>
+                    <option value="">Low Rating</option>
+                    <option value="">Medium Rating</option>
+                    <option value="">High Rating</option>
                 </select>
                 <input type="text" class="form-control" placeholder="Lokasi" style="margin-bottom: 20px;">
                 <button type="submit" class="btn btn-info btn-block">Cari Asisten</button>
@@ -51,12 +45,18 @@
                 <h5 class="card-title">Asisten dengan rating tinggi</h5>
                 
                 <div style="margin-top: 30px;">
+                @php $checker = false; @endphp
+                @foreach($asisten as $u)
                 <ul>
-                    <li><a href="#" class="card-link">Card link</a></li>
-                    <li><a href="#" class="card-link">Card link</a></li>
-                    <li><a href="#" class="card-link">Card link</a></li>
-                    <li><a href="#" class="card-link">Card link</a></li>
+                @if($u->rating > 3)
+                @php $checker = true; @endphp
+                    <li><a href="#" class="card-link">{{$u->nama}}</a></li>
+                @endif
                 </ul>
+                @endforeach
+                @if($checker == false)
+                   <p style="text-align: center;">--- <br>Sementara ini belum terdapat asisten dengan rating tinggi <br>---</p>
+                @endif
                 </div>
             </div>
         </div><!-- /.card -->
@@ -68,32 +68,34 @@
                 <nav class="navbar navbar-expand-sm">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="index3.html" class="nav-link">Semua</a>
+                            <a href="" class="nav-link" style="text-decoration: {{(request()->is('assist-search')) ? 'underline;' : 'none;'}}">Semua</a>
                         </li>
+                        @foreach($kategori as $key => $k)
+                        @if($key < 4)
                         <li class="nav-item">
-                            <a href="index3.html" class="nav-link">Asisten Pribadi</a>
+                            <a href="{{route('searchByKategori', $k->id)}}" class="nav-link">{{$k->name}}</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="index3.html" class="nav-link">Asisten Keuangan</a>
-                        </li>
+                        @endif
+                        @endforeach
                     </ul>
                 </nav>
             </div>
         </div>
 
-        @for($i = 0; $i < 10; $i++)
+        @foreach($asisten as $as)
         <div class="card card-primary card-outline">
             <div class="card-body">
-            <h5>Nama Asisten</h5>
+            <h5>{{$as->nama}}</h5>
             <p class="card-text">
-                <i class="fa fa-map-marker"></i> Lokasi Asisten <br>
-                <i class="fa fa-tag"></i> Kategori Asisten <br><br>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque saepe nulla voluptas aut veniam, similique distinctio odit iusto voluptates rerum perspiciatis dignissimos illum sed suscipit in, aliquid nam. Corrupti, ex.
+            <img src="{{ asset('/images/formal/'. $as->foto_profil ) }}" class="img-circle" alt="foto asisten" style="float: right; height: 100px; width: 100px;">
+                <i class="fa fa-map-marker"></i> {{$as->alamat}} <br>
+                <i class="fa fa-tag"></i> {{$as->kategori['name']}} <br><br>
+                {{$as->bio}}.
             </p>
             <a href="#" class="btn btn-info">Hire me</a>
             </div>
         </div>
-        @endfor
+        @endforeach
         </div>
         <!-- /.col-md-6 -->
     </div>

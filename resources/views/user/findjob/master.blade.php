@@ -69,35 +69,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="" class="img-circle" alt="Image">
-
+                <img src="{{ asset('/images/formal/'. Auth::user()->foto_profil ) }}" class="img-circle" alt="Image">
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  {{ Auth::user()->nama }} <br><small>{{ is_null(Auth::user()->kategori_id) ? '' : Auth::user()->kategori->name }}</small>
+                  @if(Auth::user()->kategori_id == null)
+                  <small><a href="" data-toggle="modal" data-target="#lengkap">Silahkan lengkapi data anda</a></small>
+                  @endif
                 </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <div class="pull-right" style="float: right;">
+                  <a href="logout" class="btn btn-default btn-flat">Logout</a>
                 </div>
               </li>
             </ul>
@@ -182,6 +165,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
 </div>
 
+@if(Auth::user() != null)
 <div class="modal fade" id="lengkap" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -192,56 +176,85 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </button>
       </div>
       <div class="modal-body">
-        <form action="" method="post">
+        <form action="register-2/{{Auth::user()->id}}" method="post" enctype="multipart/form-data">
+        {{ csrf_field() }}
           <label for="">Nomor Telepon</label>
-          <input type="text" class="form-control">
-          <label for=""></label>
-          <select name="" id="" class="form-control">
+          <input type="text" class="form-control" name="nomor">
+          @if($errors->has('nomor'))
+          <div class="text-danger">
+              {{ $errors->first('nomor')}}
+          </div>
+          @endif
+          <label for="">Kategori</label>
+          <select id="" class="form-control" name="kategori">
             <option value="">Pilih kategori</option>
+            @foreach(\App\Kategori::all() as $k)
+            <option value="{{$k->id}}">{{$k->name}}</option>
+            @endforeach
           </select>
+          @if($errors->has('kategori'))
+          <div class="text-danger">
+              {{ $errors->first('kategori')}}
+          </div>
+          @endif
           <label for="">Provinsi</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" name="provinsi">
+          @if($errors->has('provinsi'))
+          <div class="text-danger">
+              {{ $errors->first('provinsi')}}
+          </div>
+          @endif
           <label for="">Kota</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" name="kota">
+          @if($errors->has('kota'))
+          <div class="text-danger">
+              {{ $errors->first('kota')}}
+          </div>
+          @endif
           <label for="">Alamat</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" name="alamat">
+          @if($errors->has('alamat'))
+          <div class="text-danger">
+              {{ $errors->first('alamat')}}
+          </div>
+          @endif
           <label for="">Ceritakan tentang diri anda</label>
-          <textarea name="" id="" cols="30" rows="5" class="form-control"></textarea>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#dokumen" data-dismiss="modal">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="dokumen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Mohon lengkapi data anda</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="post">
+          <textarea name="bio" id="" cols="30" rows="5" class="form-control"></textarea>
+          @if($errors->has('bio'))
+          <div class="text-danger">
+              {{ $errors->first('bio')}}
+          </div>
+          @endif
           <label for="">Foto Formal</label>
-          <input type="file" name="" id="" class="form-control" style="margin-bottom: 5px;">
+          <input type="file" name="formal" id="" class="form-control" style="margin-bottom: 5px;">
+          @if($errors->has('formal'))
+          <div class="text-danger">
+              {{ $errors->first('formal')}}
+          </div>
+          @endif
           <label for="">Foto CV</label>
-          <input type="file" name="" id="" class="form-control" style="margin-bottom: 5px;">
+          <input type="file" name="cv" id="" class="form-control" style="margin-bottom: 5px;">
+          @if($errors->has('cv'))
+          <div class="text-danger">
+              {{ $errors->first('cv')}}
+          </div>
+          @endif
           <label for="">Foto Portofolio</label>
-          <input type="file" name="" id="" class="form-control">
-        </form>
+          <input type="file" name="portofolio" id="" class="form-control">
+          @if($errors->has('portofolio'))
+          <div class="text-danger">
+              {{ $errors->first('portofolio')}}
+          </div>
+          @endif
       </div>
       <div class="modal-footer">
-      <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#login" data-dismiss="modal">Submit</button>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
       </div>
     </div>
   </div>
 </div>
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-top: 12.5%;">

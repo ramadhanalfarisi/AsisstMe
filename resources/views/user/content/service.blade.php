@@ -5,11 +5,11 @@
                 <div class="col-sm-4 sm-margin-b-4">
                     <div class="service" data-height="height">
                         <div class="service-element">
-                            <i class="service-icon icon-chemistry"></i>
+                            <i class="service-icon icon-rocket"></i>
                         </div>
                         <div class="service-info">
-                            <h3>Certified Assistant</h3>
-                            <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                            <h3>Cepat</h3>
+                            <p class="margin-b-5">Anda bisa menemukan asisten yang anda butuhkan dengan cepat</p>
                         </div>
                         <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" class="content-wrapper-link"></a>    
                     </div>
@@ -17,11 +17,11 @@
                 <div class="col-sm-4 sm-margin-b-4">
                     <div class="service bg-color-base wow fadeInDown" data-height="height" data-wow-duration=".3" data-wow-delay=".1s">
                         <div class="service-element">
-                            <i class="service-icon color-white icon-screen-tablet"></i>
+                            <i class="service-icon color-white icon-check"></i>
                         </div>
                         <div class="service-info">
-                            <h3 class="color-white">Easier Communication</h3>
-                            <p class="color-white margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                            <h3 class="color-white">Mudah</h3>
+                            <p class="color-white margin-b-5">Hanya dengan menekan tombol pesan, asisten bisa didapatkan</p>
                         </div>
                         <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" class="content-wrapper-link"></a>    
                     </div>
@@ -32,8 +32,8 @@
                             <i class="service-icon icon-badge"></i>
                         </div>
                         <div class="service-info">
-                            <h3>Feature Reach</h3>
-                            <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
+                            <h3>Ahli</h3>
+                            <p class="margin-b-5">Dengan tenaga ahli di masing-masing bidang</p>
                         </div>
                         <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" class="content-wrapper-link"></a>    
                     </div>
@@ -60,7 +60,7 @@
                             <i class="service-icon icon-speedometer"></i>
                         </div>
                         <div class="service-info">
-                            <h3>Fast Search</h3>
+                            <h3>Fast Delivery</h3>
                             <p class="margin-b-5">Lorem ipsum dolor amet consectetur ut consequat siad esqudiat dolor</p>
                         </div>
                         <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" class="content-wrapper-link"></a>    
