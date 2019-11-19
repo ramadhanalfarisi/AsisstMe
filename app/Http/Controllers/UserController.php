@@ -22,17 +22,50 @@ class UserController extends Controller
     public function indexSecond()
     {
         $asisten = User::all();
+        $asistenRating = User::all();
         $kategori = Kategori::all();
 
-        return view('user.findjob.content.home', compact(['asisten', 'kategori']));
+        return view('user.findjob.content.home', compact(['asisten', 'kategori', 'asistenRating']));
     }
 
     public function indexSecondSearch($id)
     {
         $asisten = User::where('kategori_id', $id)->get();
+        $asistenRating = User::all();
         $kategori = Kategori::all();
 
-        return view('user.findjob.content.home', compact(['asisten', 'kategori']));
+        return view('user.findjob.content.home', compact(['asisten', 'kategori', 'id', 'asistenRating']));
+    }
+
+    public function indexSecondQuerySearch(Request $req)
+    {
+        $asisten = User::where('nama', 'LIKE', '%'.$req->cari.'%')->orWhere('alamat', 'LIKE', '%'.$req->cari.'%')
+                        ->orWhere('bio', 'LIKE', '%'.$req->cari.'%')->get();
+        $asistenRating = User::all();
+        $kategori = Kategori::all();
+
+        return view('user.findjob.content.home', compact(['asisten', 'kategori', 'asistenRating']));
+    }
+
+    public function indexSecondMenuSearch(Request $req)
+    {
+        if($req->kategori != null)$asisten = User::where('kategori_id', $req->kategori);
+        
+        if($req->rating == 'unrated')$asisten = isset($asisten) ? $asisten->whereNull('rating') : User::whereNull('rating');
+        if($req->rating == 'low')$asisten = isset($asisten) ? $asisten->whereBetween('rating', [1, 2]) : User::whereBetween('rating', [1, 2]);
+        if($req->rating == 'medium')$asisten = isset($asisten) ? $asisten->where('rating', '3') : User::where('rating', '3');
+        if($req->rating == 'high')$asisten = isset($asisten) ? $asisten->whereBetween('rating', [4, 5]) : User::whereBetween('rating', [4, 5]);
+
+        if(!is_null($req->lokasi)) {
+            $asisten =  isset($asisten) ? $asisten->where('alamat', 'like', '%'.$req->lokasi.'%')->get() : User::where('alamat', 'like', '%'.$req->lokasi.'%')->get();
+        } else {
+            $asisten = isset($asisten) ? $asisten->get() : User::all();
+        }
+        
+        $asistenRating = User::all();
+        $kategori = Kategori::all();
+
+        return view('user.findjob.content.home', compact(['asisten', 'kategori', 'asistenRating']));
     }
 
     public function registerFirst(Request $req)

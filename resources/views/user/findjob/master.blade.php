@@ -9,12 +9,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Top Navigation</title>
+  <title>Assist Me</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="bower_components/admin-lte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ asset('bower_components/admin-lte/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="bower_components/admin-lte/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ asset('bower_components/admin-lte/dist/css/adminlte.min.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -24,8 +24,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
-      <a href="/" class="navbar-brand">
-        <img src="img/logo.png" alt="AssistMe Logo"
+      <a href="{{route('home')}}" class="navbar-brand">
+        <img src="{{asset('img/logo.png')}}" alt="AssistMe Logo"
              style="height: 60px;">
       </a>
       
@@ -36,9 +36,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
-          <form action="" method="post" class="form-inline">
-            <input type="text" class="form-control" style="width: 750px;">
-            <button class="btn btn-link" style="margin-left: 5px;"><i class="fa fa-search"></i></button>
+          <form action="{{route('searchByQuery')}}" method="GET" class="form-inline">
+            <input type="text" class="form-control" style="width: 750px;" name="cari" placeholder="Masukan nama / alamat / bio asisten...">
+            <button type="submit" class="btn btn-link" style="margin-left: 5px;"><i class="fa fa-search"></i></button>
           </form>
         </ul>
       </div>
@@ -80,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right" style="float: right;">
-                  <a href="logout" class="btn btn-default btn-flat">Logout</a>
+                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Logout</a>
                 </div>
               </li>
             </ul>
@@ -278,11 +278,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="bower_components/admin-lte/plugins/jquery/jquery.min.js"></script>
+<script src="{{ asset('bower_components/admin-lte/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
-<script src="bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="bower_components/admin-lte/dist/js/adminlte.min.js"></script>
+<script src="{{ asset('bower_components/admin-lte/dist/js/adminlte.min.js') }}"></script>
 
 <script>
 

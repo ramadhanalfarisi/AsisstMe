@@ -21,20 +21,21 @@
             <div class="card-body">
             <h5 class="card-title" style="margin-bottom: 30px;">Pilih kriteria</h5>
 
-            <form action="" method="post">
-                <select name="" id="" class="form-control" style="margin-bottom: 10px;">
+            <form action="{{route('searchByMenu')}}" method="get">
+                <select name="kategori" id="" class="form-control" style="margin-bottom: 10px;">
                     <option value="">Pilih kategori</option>
                     @foreach($kategori as $k)
                     <option value="{{$k->id}}">{{$k->name}}</option>
                     @endforeach
                 </select>
-                <select name="" id="" class="form-control" style="margin-bottom: 10px;">
+                <select name="rating" id="" class="form-control" style="margin-bottom: 10px;">
                     <option value="">Pilih rating</option>
-                    <option value="">Low Rating</option>
-                    <option value="">Medium Rating</option>
-                    <option value="">High Rating</option>
+                    <option value="unrated">Unrated</option>
+                    <option value="low">Low Rating</option>
+                    <option value="medium">Medium Rating</option>
+                    <option value="high">High Rating</option>
                 </select>
-                <input type="text" class="form-control" placeholder="Lokasi" style="margin-bottom: 20px;">
+                <input type="text" class="form-control" name="lokasi" placeholder="Lokasi" style="margin-bottom: 20px;">
                 <button type="submit" class="btn btn-info btn-block">Cari Asisten</button>
             </form>
             </div>
@@ -46,7 +47,7 @@
                 
                 <div style="margin-top: 30px;">
                 @php $checker = false; @endphp
-                @foreach($asisten as $u)
+                @foreach($asistenRating as $u)
                 <ul>
                 @if($u->rating > 3)
                 @php $checker = true; @endphp
@@ -66,14 +67,18 @@
         <div class="card">
             <div class="card-header" >
                 <nav class="navbar navbar-expand-sm">
-                    <ul class="navbar-nav">
+                    <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a href="" class="nav-link" style="text-decoration: {{(request()->is('assist-search')) ? 'underline;' : 'none;'}}">Semua</a>
+                            <a href="{{ route('search') }}" class="nav-link {{(request()->is('assist-search')) ? 'active' : ''}}">Semua</a>
                         </li>
                         @foreach($kategori as $key => $k)
                         @if($key < 4)
                         <li class="nav-item">
+                            @if(isset($id) != null && $id == $k->id)
+                            <a href="{{route('searchByKategori', $k->id)}}" class="nav-link active">{{$k->name}}</a>
+                            @else
                             <a href="{{route('searchByKategori', $k->id)}}" class="nav-link">{{$k->name}}</a>
+                            @endif
                         </li>
                         @endif
                         @endforeach
@@ -85,11 +90,19 @@
         @foreach($asisten as $as)
         <div class="card card-primary card-outline">
             <div class="card-body">
-            <h5>{{$as->nama}}</h5>
+            <h5>{{$as->nama}}
+            @if($as->rating != null)
+            @for($i = 1; $i <= $as->rating; $i++)
+            <i class="fa fa-star fa-xs" style="color: red;"></i>
+            @endfor
+            @else
+            <b>Unrated</b>
+            @endif 
+            </h5>
             <p class="card-text">
             <img src="{{ asset('/images/formal/'. $as->foto_profil ) }}" class="img-circle" alt="foto asisten" style="float: right; height: 100px; width: 100px;">
                 <i class="fa fa-map-marker"></i> {{$as->alamat}} <br>
-                <i class="fa fa-tag"></i> {{$as->kategori['name']}} <br><br>
+                <i class="fa fa-tag"></i> {{$as->kategori['name']}}<br><br>
                 {{$as->bio}}.
             </p>
             <a href="#" class="btn btn-info">Hire me</a>
