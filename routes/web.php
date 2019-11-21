@@ -21,14 +21,22 @@ Route::post('register-2/{id}', 'UserController@registerSecond');
 Route::post('login', 'UserController@login');
 Route::get('logout', 'UserController@logout')->name('logout');
 
-Route::get('admin', 'AdminController@index');
+Route::prefix('admin')->middleware('auth')->group(function(){
+    Route::get('user', 'AdminController@index')->name('adminUser');
+    Route::post('rating/{id}', 'AdminController@postRating')->name('postRating');
+    Route::post('edit-user/{id}', 'AdminController@editUser')->name('editUser');
+    Route::get('delete-user/{id}', 'AdminController@deleteUser')->name('deleteUser');
+});
+Route::get('admin/login', 'AdminController@login')->name('login');
+Route::post('admin/check', 'AdminController@checkLogin')->name('checkLogin');
+Route::get('admin/logout', 'AdminController@logout')->name('adminLogout');
 
 Route::get('/edit', function(){
     return view('edit_kategori');
 });
 
 Route::get('/detail', function(){
-    return view('detail_kategori');
+    return view('admin.detail_kategori');
 });
 
 Route::get('/2', function () {

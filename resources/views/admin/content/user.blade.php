@@ -8,11 +8,6 @@
         <div class="row mb-2">
         <div class="col-sm-6">
             <h1>User</h1>
-            <br />
-            <a class="btn btn-primary btn-sm" href="{{url('/add')}}">
-            <i class="fas fa-plus"></i>
-            Add
-            </a>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -23,6 +18,12 @@
         </div>
         </div>
     </div><!-- /.container-fluid -->
+    @if (Session::has('alert-success'))
+    <div class="alert alert-success alert-dismissible" style="margin-top: 10px; margin-bottom: -10px;">
+        <a href=""><button type="button" class="close" data-dismiss="alert">&times;</button></a>
+        {{Session::get('alert-success')}}
+    </div>
+    @endif
     </section>
 
     <!-- Main content -->
@@ -30,9 +31,6 @@
 
     <!-- Default box -->
     <div class="card">
-        <div class="card-header">
-        <h3 class="card-title">User</h3>
-        </div>
         <div class="card-body p-0">
         <table class="table table-striped">
             <thead>
@@ -58,30 +56,63 @@
                     </i>
                     View
                 </a>
+                <!-- Rating modal -->
                 <div class="modal fade" id="check_document_{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" >
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                     <div class="modal-body">
-                    <form action="" method="post">
-                    <input type="text" name="rating" class="form-control" placeholder="Berikan rating">
-                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                    </form>
                         <h3>Foto CV</h3>
-                        <img src="{{ asset('images/cv/'.$u->foto_cv) }}" alt="" height="50%" width="450px">
-                        <h3>Foto Portfolio</h3>
-                        <img src="{{ asset('images/portofolio/'.$u->portfolio) }}" alt="" height="50%" width="450px">
+                        <img src="{{ asset('images/cv/'.$u->foto_cv) }}" alt="" height="50%" width="465px">
+                        <h3 style="margin-top: 10px;">Foto Portfolio</h3>
+                        <img src="{{ asset('images/portofolio/'.$u->portfolio) }}" alt="" height="50%" width="465px">
+
+                        <form action="{{route('postRating', $u->id)}}" method="post" style="margin-top: 30px;">
+                        {{csrf_field()}}
+                            <input type="text" name="rating" class="form-control" placeholder="Berikan rating">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
                     </div>
                     <div class="modal-footer">
                     </div>
                     </div>
                 </div>
                 </div>
-                <a class="btn btn-info btn-sm" href="{{url('/edit')}}">
+                <a class="btn btn-primary btn-sm" href="" data-toggle="modal" data-target="#edit_user_{{$u->id}}">
                     <i class="fas fa-pencil-alt">
                     </i>
                     Edit
                 </a>
-                <a class="btn btn-danger btn-sm" href="#">
+                <!-- Edit modal -->
+                <div class="modal fade" id="edit_user_{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-body">
+                        <form action="{{route('editUser', $u->id)}}" method="post">
+                        {{csrf_field()}}
+                            <label for="">Nama</label>
+                            <input type="text" name="nama" class="form-control" value="{{$u->nama}}">
+                            <label for="">Email</label>
+                            <input type="text" name="email" class="form-control" value="{{$u->email}}">
+                            <label for="">No Telepon</label>
+                            <input type="text" name="no_telp" class="form-control" value="{{$u->no_telp}}">
+                            <label for="">Jenis Kelamin</label>
+                            <select name="jenis_kelamin" id="" class="form-control">
+                                <option value="1" {{ $u->jenis_kelamin == 'Pria' ? 'selected' : ''}}>Pria</option>
+                                <option value="2" {{ $u->jenis_kelamin == 'Wanita' ? 'selected' : ''}}>Wanita</option>
+                            </select>
+                            <label for="">Alamat</label>
+                            <input type="text" name="alamat" class="form-control" value="{{$u->alamat}}">
+                            <label for="">Bio</label>
+                            <textarea name="bio" id="" cols="30" rows="10" class="form-control">{{$u->bio}}</textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <a class="btn btn-danger btn-sm" href="{{route('deleteUser', $u->id)}}">
                     <i class="fas fa-trash">
                     </i>
                     Delete
@@ -99,5 +130,4 @@
     </section>
     <!-- /.content -->
 </div>
-
 @endsection

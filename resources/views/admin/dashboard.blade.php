@@ -23,30 +23,16 @@
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="/bower_components/admin-lte/index3.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
+      <!-- Right navbar links -->
+      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item" style="margin-right: 5px;">
+          <!-- Button trigger modal -->
+          <a href="{{route('adminLogout')}}" class="btn btn-link">
+            Logout
+          </a>
         </li>
       </ul>
-
-      <!-- SEARCH FORM -->
-      <form class="form-inline ml-3">
-        <div class="input-group input-group-sm">
-          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-navbar" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
     </nav>
     <!-- /.navbar -->
 
@@ -78,13 +64,13 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-            <a href="{{url('/')}}" class="nav-link active">
+            <a href="{{route('adminUser')}}" class="nav-link {{ (request()->is('admin/user')) ? 'active' : '' }}">
               <i class="far fa-user nav-icon"></i>
               <p>User</p>
             </a>
             </li>
             <li class="nav-item">
-              <a href="{{url('/')}}" class="nav-link active">
+              <a href="{{url('/')}}" class="nav-link">
                 <i class="far fa-folder-open nav-icon"></i>
                 <p>Kategori</p>
               </a>
@@ -111,13 +97,18 @@
   <!-- ./wrapper -->
 
   <!-- jQuery -->
-  <script src="/bower_components/admin-lte/plugins/jquery/jquery.min.js"></script>
+  <script src="{{ asset('bower_components/admin-lte/plugins/jquery/jquery.min.js')}}"></script>
   <!-- Bootstrap 4 -->
-  <script src="/bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <!-- AdminLTE App -->
-  <script src="/bower_components/admin-lte/dist/js/adminlte.min.js"></script>
+  <script src="{{ asset('bower_components/admin-lte/dist/js/adminlte.min.js')}}"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="/bower_components/admin-lte/dist/js/demo.js"></script>
+  <script src="{{ asset('bower_components/admin-lte/dist/js/demo.js')}}"></script>
+  <script>
+  $(document).ready(function(){
+    $('.alert-success').fadeIn().delay(2000).fadeOut();
+  });
+  </script>
 </body>
 
 </html>
