@@ -21,9 +21,7 @@ Route::post('register-2/{id}', 'UserController@registerSecond');
 Route::post('login', 'UserController@login');
 Route::get('logout', 'UserController@logout')->name('logout');
 
-Route::get('/add', function(){
-    return view('add_kategori');
-});
+Route::get('admin', 'AdminController@index');
 
 Route::get('/edit', function(){
     return view('edit_kategori');

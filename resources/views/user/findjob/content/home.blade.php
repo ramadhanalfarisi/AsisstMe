@@ -47,14 +47,14 @@
                 
                 <div style="margin-top: 30px;">
                 @php $checker = false; @endphp
-                @foreach($asistenRating as $u)
                 <ul>
+                @foreach($asistenRating as $u)
                 @if($u->rating > 3)
                 @php $checker = true; @endphp
                     <li><a href="#" class="card-link">{{$u->nama}}</a></li>
                 @endif
-                </ul>
                 @endforeach
+                </ul>
                 @if($checker == false)
                    <p style="text-align: center;">--- <br>Sementara ini belum terdapat asisten dengan rating tinggi <br>---</p>
                 @endif
@@ -100,7 +100,11 @@
             @endif 
             </h5>
             <p class="card-text">
-            <img src="{{ asset('/images/formal/'. $as->foto_profil ) }}" class="img-circle" alt="foto asisten" style="float: right; height: 100px; width: 100px;">
+            @if($as->foto_profil == null)
+            <i class="fa fa-user fa-3x" style="color: #888;float: right;display: inline-block;border-radius: 60px;box-shadow: 0px 0px 2px #888;padding: 0.5em 0.6em;"></i>
+            @else
+            <img src="{{ asset('/images/formal/'. $as->foto_profil ) }}" class="img-circle" style="float: right; height: 100px; width: 100px;">
+            @endif
                 <i class="fa fa-map-marker"></i> {{$as->alamat}} <br>
                 <i class="fa fa-tag"></i> {{$as->kategori['name']}}<br><br>
                 {{$as->bio}}.
