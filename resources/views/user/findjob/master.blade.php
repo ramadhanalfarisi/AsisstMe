@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span class="hidden-xs">{{ Auth::user()->nama }}</span>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu dropdown-menu-right">
               <!-- User image -->
               <li class="user-header">
                 <img src="{{ asset('/images/formal/'. Auth::user()->foto_profil ) }}" class="img-circle" alt="Image">
@@ -79,6 +79,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
+                <div class="pull-left" style="float: left;">
+                  <a href="{{ route('profile')}}" class="btn btn-default btn-flat">Profile  </a>
+                </div>
                 <div class="pull-right" style="float: right;">
                   <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Logout</a>
                 </div>
@@ -116,7 +119,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </button>
       </div>
       <div class="modal-body">
-        <form action="register" method="post">
+        <form action="{{route('register')}}" method="post">
         {{ csrf_field() }}
           <label for="">Nama Lengkap</label>
           <input type="text" class="form-control" name="nama">
@@ -176,7 +179,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </button>
       </div>
       <div class="modal-body">
-        <form action="register-2/{{Auth::user()->id}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('lengkapDocument', Auth::user()->id) }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
           <label for="">Nomor Telepon</label>
           <input type="text" class="form-control" name="nomor">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Kategori;
+use App\RequestHire;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -126,6 +127,21 @@ class UserController extends Controller
         return redirect()->back()->with('alert-success', 'Terimakasih telah melengkapi data');
     }
 
+    public function postRequest(Request $req, $id)
+    {
+        $user = User::find($id);
+        $request = new RequestHire;
+        $request->email_pencari = $req->email_pencari;
+        $request->email_penyedia = $user->email;
+        $request->notelp_pencari = $req->no_telp;
+        $request->lokasi_pencari = $req->lokasi;
+        $request->gaji = $req->gaji;
+        $request->status = 0;
+        $request->save();
+        
+        return redirect()->back()->with('alert-success', 'Terimakasih kami akan memproses ke tahap selanjutnya');
+    }
+
     public function login(Request $req)
     {
         $this->validate($req, [
@@ -151,64 +167,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function indexProfile()
     {
-        //
+        return view('user.findjob.content.profile');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function indexRequest()
     {
-        //
-    }
+        $request = RequestHire::where('email_penyedia', Auth::user()->email)->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('user.findjob.content.request', compact(['request']));
     }
 }

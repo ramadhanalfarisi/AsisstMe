@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->enum('role', ['User', 'Company', 'Superuser'])->nullable();
+            $table->enum('role', ['User', 'Superuser'])->nullable();
             $table->unsignedBigInteger('kategori_id')->nullable();
             $table->string('nama');
             $table->string('alamat')->nullable();

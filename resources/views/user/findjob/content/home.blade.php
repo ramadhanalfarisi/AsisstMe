@@ -49,7 +49,7 @@
                 @php $checker = false; @endphp
                 <ul>
                 @foreach($asistenRating as $u)
-                @if($u->rating > 3)
+                @if($u->rating > 3 && $u->role == 'User')
                 @php $checker = true; @endphp
                     <li><a href="#" class="card-link">{{$u->nama}}</a></li>
                 @endif
@@ -88,6 +88,7 @@
         </div>
 
         @foreach($asisten as $as)
+        @if($as->role == 'User')
         <div class="card card-primary card-outline">
             <div class="card-body">
             <h5>{{$as->nama}}
@@ -109,9 +110,39 @@
                 <i class="fa fa-tag"></i> {{$as->kategori['name']}}<br><br>
                 {{$as->bio}}.
             </p>
-            <a href="#" class="btn btn-info">Hire me</a>
+            <a href="#" data-toggle="modal" data-target="#hire_{{$as->id}}" class="btn btn-info">Hire me</a>
+            <!-- Modal -->
+            <div class="modal fade" id="hire_{{$as->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Isi data anda</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('postRequest', $as->id)}}" method="post">
+                    {{ csrf_field() }}
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" name="email_pencari" required>
+                    <label for="">No Telepon</label>
+                    <input type="text" class="form-control" name="no_telp" required>
+                    <label for="">Lokasi</label>
+                    <input type="text" class="form-control" name="lokasi" required>
+                    <label for="">Gaji yang ditawarkan</label>
+                    <input type="text" class="form-control" name="gaji"required>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
             </div>
         </div>
+        @endif
         @endforeach
         </div>
         <!-- /.col-md-6 -->

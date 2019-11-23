@@ -16,10 +16,14 @@ Route::get('assist-search', 'UserController@indexSecond')->name('search');
 Route::get('assist-search-menu', 'UserController@indexSecondMenuSearch')->name('searchByMenu');
 Route::get('assist-search-query', 'UserController@indexSecondQuerySearch')->name('searchByQuery');
 Route::get('assist-search/{id}', 'UserController@indexSecondSearch')->name('searchByKategori');
-Route::post('register', 'UserController@registerFirst');
-Route::post('register-2/{id}', 'UserController@registerSecond');
+Route::post('register', 'UserController@registerFirst')->name('register');
+Route::post('register-2/{id}', 'UserController@registerSecond')->name('lengkapDocument');
 Route::post('login', 'UserController@login');
 Route::get('logout', 'UserController@logout')->name('logout');
+Route::get('profile', 'UserController@indexProfile')->name('profile');
+Route::get('request', 'UserController@indexRequest')->name('requestProfile');
+
+Route::post('hire/{id}', 'UserController@postRequest')->name('postRequest');
 
 Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('user', 'AdminController@index')->name('adminUser');
@@ -30,15 +34,3 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 Route::get('admin/login', 'AdminController@login')->name('login');
 Route::post('admin/check', 'AdminController@checkLogin')->name('checkLogin');
 Route::get('admin/logout', 'AdminController@logout')->name('adminLogout');
-
-Route::get('/edit', function(){
-    return view('edit_kategori');
-});
-
-Route::get('/detail', function(){
-    return view('admin.detail_kategori');
-});
-
-Route::get('/2', function () {
-    return view('user.second');
-});

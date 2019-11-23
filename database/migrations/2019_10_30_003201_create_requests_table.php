@@ -17,6 +17,8 @@ class CreateRequestsTable extends Migration
             $table->bigIncrements('id');
             $table->string('email_penyedia');
             $table->string('email_pencari');
+            $table->string('lokasi_pencari');
+            $table->string('notelp_pencari');
             $table->integer('gaji');
             $table->boolean('status');
             $table->timestamps();
