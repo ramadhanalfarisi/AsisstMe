@@ -178,4 +178,19 @@ class UserController extends Controller
 
         return view('user.findjob.content.request', compact(['request']));
     }
+
+    public function controlRequest($id, $status)
+    {
+        $request = RequestHire::find($id);
+        if($status == 1){
+            $request->status = 1;
+            $user = User::where('email', Auth::user()->email)->first();
+            $user->status_hire = 1;
+            $request->save();
+            $user->save();
+        }
+        if($status == 0)$request->delete();
+
+        return redirect()->back();
+    }
 }

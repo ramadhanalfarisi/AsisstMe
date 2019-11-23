@@ -35,6 +35,7 @@
         </div>
         <!-- /.col-md-6 -->
         <div class="col-lg-9">
+        @if(Auth::user()->status_hire == 0)
         <div class="card card-primary card-outline">
             <div class="card-body">
             <div class="row">
@@ -53,14 +54,22 @@
                         <td>{{$r->notelp_pencari}}</td>
                         <td>{{$r->gaji}}</td>
                         <td>
-                        <a href="" class="btn btn-danger" style="padding-right: 15px; padding-left: 15px;"><i class="fa fa-times"></i></a>
-                        <a href="" class="btn btn-success"><i class="fa fa-check"></i></a>
+                        <a href="{{ route('requestAction', [$r->id, 0]) }}" class="btn btn-danger" style="padding-right: 15px; padding-left: 15px;"><i class="fa fa-times"></i></a>
+                        <a href="{{ route('requestAction', [$r->id, 1]) }}" class="btn btn-success"><i class="fa fa-check"></i></a>
                         </td>
                     </tr>
                     @endforeach
                </table>
             </div>
         </div>
+        @else
+        <div class="card card-primary card-outline">
+            <div class="card-body">
+            @php $company = \App\RequestHire::where('status', 1)->where('email_penyedia', Auth::user()->email)->first() @endphp
+            <h1>You're already hired to {{ $company->email_pencari }}</h1>
+            </div>
+        </div>
+        @endif
         </div>
         <!-- /.col-md-6 -->
     </div>

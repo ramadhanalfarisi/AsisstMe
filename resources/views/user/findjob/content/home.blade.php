@@ -49,9 +49,9 @@
                 @php $checker = false; @endphp
                 <ul>
                 @foreach($asistenRating as $u)
-                @if($u->rating > 3 && $u->role == 'User')
+                @if($u->rating > 3 && $u->role == 'User' && $u->status_hire == 0)
                 @php $checker = true; @endphp
-                    <li><a href="#" class="card-link">{{$u->nama}}</a></li>
+                    <li><a href="#"  data-toggle="modal" data-target="#hire_{{$u->id}}" class="card-link">{{$u->nama}}</a></li>
                 @endif
                 @endforeach
                 </ul>
@@ -88,7 +88,7 @@
         </div>
 
         @foreach($asisten as $as)
-        @if($as->role == 'User')
+        @if($as->role == 'User' && $as->status_hire == 0)
         <div class="card card-primary card-outline">
             <div class="card-body">
             <h5>{{$as->nama}}

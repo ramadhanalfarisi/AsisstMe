@@ -22,6 +22,7 @@ Route::post('login', 'UserController@login');
 Route::get('logout', 'UserController@logout')->name('logout');
 Route::get('profile', 'UserController@indexProfile')->name('profile');
 Route::get('request', 'UserController@indexRequest')->name('requestProfile');
+Route::get('request/{id}/{status}', 'UserController@controlRequest')->name('requestAction');
 
 Route::post('hire/{id}', 'UserController@postRequest')->name('postRequest');
 
