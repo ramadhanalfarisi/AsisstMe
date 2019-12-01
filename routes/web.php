@@ -23,6 +23,8 @@ Route::get('logout', 'UserController@logout')->name('logout');
 Route::get('profile', 'UserController@indexProfile')->name('profile');
 Route::get('request', 'UserController@indexRequest')->name('requestProfile');
 Route::get('request/{id}/{status}', 'UserController@controlRequest')->name('requestAction');
+Route::get('document', 'UserController@indexDocument')->name('documentProfile');
+Route::post('document/update/{id}', 'UserController@updateDocument')->name('documentUpdate');
 
 Route::post('hire/{id}', 'UserController@postRequest')->name('postRequest');
 

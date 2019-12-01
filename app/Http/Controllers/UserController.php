@@ -193,4 +193,33 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
+    public function indexDocument()
+    {
+        $document = User::where('email', Auth::user()->email)->first();
+
+        return view('user.findjob.content.document', compact(['document']));
+    }
+
+    public function updateDocument(Request $req, $tipe)
+    {
+        $user = User::find(Auth::user()->id);
+        if($tipe == 1){
+            $user->foto_cv = $req->cv->getClientOriginalName();
+            $cv = $req->file('cv');
+            $cv->move(public_path('images/cv/'), $cv->getClientOriginalName());
+        } elseif($tipe == 2) {
+            $user->portfolio = $req->portofolio->getClientOriginalName();
+            $portofolio = $req->file('portofolio');
+            $portofolio->move(public_path('images/portofolio/'), $portofolio->getClientOriginalName());
+        } elseif($tipe == 3) {
+            $user->foto_profil = $req->formal->getClientOriginalName();
+            $formal = $req->file('formal');
+            $formal->move(public_path('images/formal/'), $formal->getClientOriginalName());
+        }
+
+        $user->save();
+
+        return redirect()->back();
+    }
 }

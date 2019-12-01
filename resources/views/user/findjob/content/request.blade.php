@@ -27,7 +27,7 @@
                 <a class="nav-link active" href="{{ url('request') }}">Request</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Document</a>
+                <a class="nav-link" href="{{ url('document') }}">Document</a>
             </li>
             </ul>
             </div>
