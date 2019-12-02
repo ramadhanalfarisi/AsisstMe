@@ -70,7 +70,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="dropdown-menu dropdown-menu-right">
               <!-- User image -->
               <li class="user-header">
+                @if(Auth::user()->foto_profil == null)
+                <i class="fa fa-user fa-3x" style="color: #888;border-radius: 60px;box-shadow: 0px 0px 2px #888;padding: 0.3em 0.4em;"></i>
+                @else
                 <img src="{{ asset('/images/formal/'. Auth::user()->foto_profil ) }}" class="img-circle" alt="Image">
+                @endif
                 <p>
                   {{ Auth::user()->nama }} <br><small>{{ is_null(Auth::user()->kategori_id) ? '' : Auth::user()->kategori->name }}</small>
                   @if(Auth::user()->kategori_id == null)
@@ -102,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Developed by 
+      Developed by DevTeam
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2019 <a href="$">DevTeam</a>.</strong> All rights reserved.
