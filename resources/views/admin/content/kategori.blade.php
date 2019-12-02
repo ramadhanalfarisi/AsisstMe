@@ -1,6 +1,28 @@
 @extends('admin.dashboard')
 
 @section('content')
+<div class="modal fade" id="post_kategori" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" >
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" >Tambah kategori</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form action="{{route('addKategori')}}" method="post">
+        {{csrf_field()}}
+            <label for="">Nama</label>
+            <input type="text" name="nama" class="form-control" required>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+    </div>
+    </div>
+</div>
+</div>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -9,7 +31,7 @@
         <div class="col-sm-6">
             <h1>Kategori</h1>
             <br />
-            <a class="btn btn-primary btn-sm" href="{{url('/add')}}">
+            <a class="btn btn-primary btn-sm" href="" data-toggle="modal" data-target="#post_kategori">
             <i class="fas fa-plus"></i>
             Add
             </a>
@@ -23,6 +45,12 @@
         </div>
         </div>
     </div><!-- /.container-fluid -->
+    @if (Session::has('alert-success'))
+    <div class="alert alert-success alert-dismissible" style="margin-top: 10px; margin-bottom: -10px;">
+        <a href=""><button type="button" class="close" data-dismiss="alert">&times;</button></a>
+        {{Session::get('alert-success')}}
+    </div>
+    @endif
     </section>
 
     <!-- Main content -->
@@ -30,17 +58,6 @@
 
     <!-- Default box -->
     <div class="card">
-        <div class="card-header">
-        <h3 class="card-title">Kategori</h3>
-
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-            title="Collapse">
-            <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fas fa-times"></i></button>
-        </div>
-        </div>
         <div class="card-body p-0">
         <table class="table table-striped projects">
             <thead>
@@ -56,30 +73,47 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($kategori as $key => $k)
             <tr>
+                <td>{{ ++$key }}</td>
+                <td>{{ $k->name }}</td>
                 <td>
-                1
-                </td>
-                <td>
-                <a> Ramadhan </a>
-                <td class="project-actions text-right">
-                {{-- <a class="btn btn-primary btn-sm" href="{{url('/detail')}}">
-                    <i class="fas fa-folder">
-                    </i>
-                    View
-                </a> --}}
-                <a class="btn btn-info btn-sm" href="{{url('/edit')}}">
+                <a class="btn btn-primary btn-sm" href="" data-toggle="modal" data-target="#edit_kategori_{{$k->id}}">
                     <i class="fas fa-pencil-alt">
                     </i>
                     Edit
                 </a>
-                <a class="btn btn-danger btn-sm" href="#">
+                <!-- Edit modal -->
+                <div class="modal fade" id="edit_kategori_{{$k->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Edit kategori</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{route('editKategori', $k->id)}}" method="post">
+                        {{csrf_field()}}
+                            <label for="">Nama</label>
+                            <input type="text" name="nama" class="form-control" value="{{$k->name}}" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <a class="btn btn-danger btn-sm" href="{{route('deleteKategori', $k->id)}}">
                     <i class="fas fa-trash">
                     </i>
                     Delete
                 </a>
                 </td>
             </tr>
+            @endforeach
             </tbody>
         </table>
         </div>

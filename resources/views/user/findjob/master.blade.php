@@ -39,6 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <form action="{{route('searchByQuery')}}" method="GET" class="form-inline">
             <input type="text" class="form-control" style="width: 750px;" name="cari" placeholder="Masukan nama / alamat / bio asisten...">
             <button type="submit" class="btn btn-link" style="margin-left: 5px;"><i class="fa fa-search"></i></button>
+            <a href="{{route('search')}}" class="btn btn-link"><i class="fa fa-home"></i></a>
           </form>
         </ul>
       </div>
@@ -93,17 +94,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
   </nav>
   <!-- /.navbar -->
-  
+  <div>
   @yield('content')
+  </div>
 
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+      Developed by 
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2019 <a href="$">DevTeam</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

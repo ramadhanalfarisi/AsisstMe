@@ -51,7 +51,7 @@
                 @foreach($asistenRating as $u)
                 @if($u->rating > 3 && $u->role == 'User' && $u->status_hire == 0)
                 @php $checker = true; @endphp
-                    <li><a href="#"  data-toggle="modal" data-target="#hire_{{$u->id}}" class="card-link">{{$u->nama}}</a></li>
+                    <li><a href="#"  data-toggle="modal" data-target="#check_{{$u->id}}" class="card-link">{{$u->nama}}</a></li>
                 @endif
                 @endforeach
                 </ul>
@@ -94,7 +94,7 @@
             <h5>{{$as->nama}}
             @if($as->rating != null)
             @for($i = 1; $i <= $as->rating; $i++)
-            <i class="fa fa-star fa-xs" style="color: red;"></i>
+            <i class="fa fa-star fa-xs" style="color: #138496;"></i>
             @endfor
             @else
             <b>Unrated</b>
@@ -110,7 +110,25 @@
                 <i class="fa fa-tag"></i> {{$as->kategori['name']}}<br><br>
                 {{$as->bio}}.
             </p>
-            <a href="#" data-toggle="modal" data-target="#hire_{{$as->id}}" class="btn btn-info">Hire me</a>
+            <a href="#" data-toggle="modal" data-target="#check_{{$as->id}}" class="btn btn-info">Check me</a>
+            <!-- Modal -->
+            <div class="modal fade" id="check_{{$as->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-body">
+                    <h3 style="text-align: center;">CV</h3>
+                    <img src="{{ asset('images/cv/'.$as->foto_cv) }}" alt="" height="50%" width="465px">
+                    <h3 style="margin-top: 10px; text-align: center;">Portfolio</h3>
+                    <img src="{{ asset('images/portofolio/'.$as->portfolio) }}" alt="" height="50%" width="465px">
+                    <a href="#" data-toggle="modal" data-target="#hire_{{$as->id}}" data-dismiss="modal"class="btn btn-block btn-primary">Hire me!</a>
+                </div>
+                <div class="modal-footer">
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <a href="#" data-toggle="modal" data-target="#hire_{{$as->id}}" class="btn btn-primary">Hire me</a>
             <!-- Modal -->
             <div class="modal fade" id="hire_{{$as->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">

@@ -86,24 +86,30 @@
                 <div class="modal fade" id="edit_user_{{$u->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" >
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Edit user</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="modal-body">
                         <form action="{{route('editUser', $u->id)}}" method="post">
                         {{csrf_field()}}
                             <label for="">Nama</label>
-                            <input type="text" name="nama" class="form-control" value="{{$u->nama}}">
+                            <input type="text" name="nama" class="form-control" value="{{$u->nama}}" required>
                             <label for="">Email</label>
-                            <input type="text" name="email" class="form-control" value="{{$u->email}}">
+                            <input type="text" name="email" class="form-control" value="{{$u->email}}" required>
                             <label for="">No Telepon</label>
-                            <input type="text" name="no_telp" class="form-control" value="{{$u->no_telp}}">
+                            <input type="text" name="no_telp" class="form-control" value="{{$u->no_telp}}" required>
                             <label for="">Jenis Kelamin</label>
-                            <select name="jenis_kelamin" id="" class="form-control">
+                            <select name="jenis_kelamin" id="" class="form-control" required>
                                 <option value="1" {{ $u->jenis_kelamin == 'Pria' ? 'selected' : ''}}>Pria</option>
                                 <option value="2" {{ $u->jenis_kelamin == 'Wanita' ? 'selected' : ''}}>Wanita</option>
                             </select>
                             <label for="">Alamat</label>
-                            <input type="text" name="alamat" class="form-control" value="{{$u->alamat}}">
+                            <input type="text" name="alamat" class="form-control" value="{{$u->alamat}}" required>
                             <label for="">Bio</label>
-                            <textarea name="bio" id="" cols="30" rows="10" class="form-control">{{$u->bio}}</textarea>
+                            <textarea name="bio" id="" cols="30" rows="10" class="form-control" required>{{$u->bio}}</textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary btn-block">Submit</button>

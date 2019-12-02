@@ -39,6 +39,6 @@ class User extends Authenticatable
 
     public function kategori()
     {
-        return $this->belongsTo('App\Kategori', 'kategori_id', 'id');
+        return $this->belongsTo('App\Kategori', 'kategori_id', 'id')->withTrashed();
     }
 }

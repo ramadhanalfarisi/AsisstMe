@@ -11,6 +11,6 @@ class KategorisTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Kategori::class, 5)->create();
+        factory(App\Kategori::class, 10)->create();
     }
 }

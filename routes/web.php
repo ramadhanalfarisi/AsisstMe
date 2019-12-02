@@ -33,6 +33,11 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::post('rating/{id}', 'AdminController@postRating')->name('postRating');
     Route::post('edit-user/{id}', 'AdminController@editUser')->name('editUser');
     Route::get('delete-user/{id}', 'AdminController@deleteUser')->name('deleteUser');
+
+    Route::get('kategori', 'AdminController@indexKategori')->name('adminKategori');
+    Route::post('kategori', 'AdminController@postKategori')->name('addKategori');
+    Route::post('kategori/{id}', 'AdminController@putKategori')->name('editKategori');
+    Route::get('kategori/{id}', 'AdminController@delKategori')->name('deleteKategori');
 });
 Route::get('admin/login', 'AdminController@login')->name('login');
 Route::post('admin/check', 'AdminController@checkLogin')->name('checkLogin');

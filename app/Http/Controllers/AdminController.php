@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Kategori;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -38,6 +39,38 @@ class AdminController extends Controller
     {
         $user = User::all();
         return view('admin.content.user', compact(['user']));
+    }
+
+    public function indexKategori()
+    {
+        $kategori = Kategori::orderBy('updated_at', 'DESC')->get();
+        return view('admin.content.kategori', compact(['kategori']));
+    }
+
+    public function postKategori(Request $req)
+    {
+        $kategori = new Kategori;
+        $kategori->name = $req->nama;
+        $kategori->save();
+
+        return redirect()->back()->with('alert-success', 'Berhasil tambah kategori');
+    }
+
+    public function putKategori(Request $req, $id)
+    {
+        $kategori = Kategori::find($id);
+        $kategori->name = $req->nama;
+        $kategori->save();
+
+        return redirect()->back()->with('alert-success', 'Berhasil ubah kategori');
+    }
+
+    public function delKategori($id)
+    {
+        $kategori = Kategori::find($id);
+        $kategori->delete();
+
+        return redirect()->back()->with('alert-success', 'Berhasil delete kategori');
     }
 
     public function postRating(Request $req, $id)
